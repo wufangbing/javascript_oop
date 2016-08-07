@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+		window.onload=function(){
+
+			function inherit()
+			{
+
+				var arg;
+				var target=arguments[0];
+				for(var i=1;i<arguments.length;i++){
+					arg=arguments[i];
+					for(var prop in arg){
+
+						target[prop]=arg[prop];
+					}
+				}
+
+			}
+
+			var father={
+				name:'wmh',
+				info01:function(){alert(this.name)}
+			}
+
+			var son={
+				age:20,
+				info02:function(){alert(this.age)}
+				
+			}
+
+			inherit(son,father);
+
+			son.info01();
+			son.info02();
+			alert(son.age+','+son.name);
+
+
+
+
+		}
+
+
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+			function Parent(name){
+				this.name=name;
+
+				this.infoName=function(){
+					alert(this.name);
+				}
+			}
+
+			Parent.prototype={
+				info1:function(){
+				alert('prototype inheritance')
+				}
+			}
+
+			function Son(name,age){
+
+				this.age=age;
+				Parent.call(this,name);   //构造继承
+			}
+
+			Son.prototype=new Parent();  //原型继承
+
+			Son.prototype={
+				infoAge:function(){
+					alert(this.age);
+				}
+
+			}
+
+
+			var son1=new Son('tianbin',20);
+			alert(son1.name+','+son1.age);
+			son1.infoName();
+			son1.infoAge();
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

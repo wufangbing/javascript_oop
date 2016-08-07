@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			function inheritObject(o){
+				function p(){};
+				p.prototype=o;
+				return new p();
+			}
+
+			function inheritCreate(sub,sup){
+				var f=inheritObject(sup.prototype);
+				f.constructor=sub;
+				sub.prototype=f;
+			}
+
+
+			function Parent(name){
+				this.name=name;
+
+				this.infoName=function(){
+					alert(this.name);
+				}
+			}
+
+			Parent.prototype={
+				info1:function(){
+				alert('prototype inheritance')
+				}
+			}
+
+			function Son(name,age){
+
+				this.age=age;
+				Parent.call(this,name);   //父类构造继承
+			}
+
+			inheritCreate(Son,Parent)  //寄生式组合继承
+
+			Son.prototype={
+				infoAge:function(){
+					alert(this.age);
+				}
+
+			}
+
+			var son1=new Son('tianbin',21);
+			son1.infoName();
+			son1.infoAge();
+			alert(son1.name+','+son1.age);
+
+
+
+
+
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

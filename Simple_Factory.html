@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+
+			function BMW(){
+
+					this.color='red';
+					this.size=40;
+					this.infomation=function(){
+						alert('this is BMW:'+this.color+','+this.size);
+					}
+
+			}
+
+			function Volkswagen(){
+
+					this.color='blue';
+					this.size=20;
+					this.infomation=function(){
+						alert('this is Volkswagen:'+this.color+','+this.size);
+					}
+
+			}
+
+
+			function Factory(type){
+				switch(type){
+					case 'BMW':return new BMW();
+					case 'Volkswagen':return new Volkswagen();
+							}
+				}
+
+				var bmw=Factory('BMW');
+				bmw.infomation();
+
+				var Volkswagen=Factory('Volkswagen');
+				Volkswagen.infomation();
+		}
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

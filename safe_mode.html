@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+
+			function Person(name,age){
+				if(this instanceof Person){
+					this.name=name;
+					this.age=age;
+				}
+				else{
+					return new Person(name,age);
+				}
+
+
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
