@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+	window.onload=function(){
+
+		//父类
+		function Father(name,age){
+			this.name=name;
+			this.age=age;
+		}
+
+		Father.prototype={
+			info:function(){},
+			ablity:function(){}
+		}
+
+		//子类儿子
+		function Son(name,age,swiming){
+				Father.call(this,name,age);
+				this.swiming=swiming;
+		}
+
+		Son.prototype=new Father();
+
+		Son.prototype.ablity=function(){
+			alert('Son can '+this.swiming);
+
+		}
+
+		//子类女儿
+		function Daughter(name,age,english){
+				Father.call(this,name,age);
+				this.english=english;
+		}
+
+		Daughter.prototype=new Father();
+
+		Daughter.prototype.ablity=function(){
+			alert('Daughter can '+this.english);
+
+		}
+
+
+
+		var  son1=new Son('wfb',20,'swiming');
+		son1.ablity();
+
+		var  daughter1=new Daughter('dll',21,'english');
+		daughter1.ablity();
+
+
+
+	}
+
+	</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

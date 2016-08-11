@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+
+			function Factory(type,content){
+
+				if(this instanceof Factory){
+					var s=this[type](content);
+				}
+				else{
+					return new Factory(type,content);
+				}
+
+			}
+
+
+			Factory.prototype={
+				html:function(content){
+
+					var odiv=document.createElement('div');
+					odiv.style.width='150px';
+					odiv.style.height='150px';
+					odiv.style.border='1px solid red';
+					odiv.innerHTML=content;
+					odiv.style.textAlign='center';
+					odiv.style.float='left';
+					document.getElementById('container').appendChild(odiv);
+
+				},
+			
+
+			css:function(content){
+
+					var odiv=document.createElement('div');
+					odiv.style.width='150px';
+					odiv.style.height='150px';
+					odiv.style.border='1px solid red';
+					odiv.innerHTML=content;
+					odiv.style.textAlign='center';
+					odiv.style.float='left';
+					document.getElementById('container').appendChild(odiv);
+
+
+				},
+			
+			javascript:function(content){
+
+					var odiv=document.createElement('div');
+					odiv.style.width='150px';
+					odiv.style.height='150px';
+					odiv.style.border='1px solid red';
+					odiv.innerHTML=content;
+					odiv.style.textAlign='center';
+					odiv.style.float='left';
+					document.getElementById('container').appendChild(odiv);
+
+				}
+
+
+							
+				}
+
+
+
+				var type=[{name:'html',content:'html is structure'},{name:'css',content:'css is expression'},{name:'javascript',content:'js is sport'}];
+
+				for(var i=0;i<type.length;i++){
+					Factory(type[i].name,type[i].content);
+				}
+
+
+
+		}
+
+
+	</script>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+			border:0px;
+
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+<div id="container">
+	
+</div>
+
+</body>
+</html>
