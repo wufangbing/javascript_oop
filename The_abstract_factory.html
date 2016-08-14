@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+		window.onload=function(){
+
+			function Factory(sub,sup){
+				if(typeof Factory[sup]==='function'){
+					function p(){};
+					p.prototype=new Factory[sup]();
+					sub.constructor=sub;
+					sub.prototype=new p();
+
+				}
+				else{
+					throw new Error('error');
+				}
+			};
+
+
+			Factory.car=function(){
+				this.type='car';
+
+			}
+
+			Factory.car.prototype={
+					 getPrice: function(){
+        			return new Error('抽象方法不能调用');
+   			 },
+   				 getSpeed: function(){
+        			return new Error('抽象方法不能调用');
+    		}
+		};
+
+			Factory.bus=function(){
+				this.type='bus';
+
+			}
+			Factory.bus.prototype={
+					 getPrice: function(){
+        			return new Error('抽象方法不能调用');
+   			 },
+   				 getSpeed: function(){
+        			return new Error('抽象方法不能调用');
+    		}
+		};
+
+
+
+		function BMW(price,speed){
+			this.price=price;
+			this.speed=speed;
+
+		}
+
+		Factory(BMW,'car');
+		BMW.prototype.getPrice=function(){
+    		return this.price;
+		};
+		BMW.prototype.getSpeed=function(){
+    		return this.speed;
+		};
+
+
+		function YUTONG(price,speed){
+			this.price=price;
+			this.speed=speed;
+
+		}
+
+		Factory(YUTONG,'bus');
+		YUTONG.prototype.getPrice=function(){
+    		return this.price;
+		};
+		YUTONG.prototype.getSpeed=function(){
+    		return this.speed;
+		};
+
+
+		var b1=new BMW(400000,200);
+		alert(b1.getPrice());
+		alert(b1.getSpeed());
+
+
+
+
+
+		}
+
+
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
