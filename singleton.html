@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+			//深度单例闭包,返回对象而不是函数，注意调用的方法。。。
+			
+			// var whq=(
+
+			// 	function(){
+
+			// 		var cout={
+
+			// 			min:1,
+			// 			max:100
+
+			// 				}
+
+
+			// 	return {
+			// 			getNumber:function(name)
+			// 				{
+			// 					alert(cout[name]?cout[name]:null);
+			// 				}
+
+			// 			}
+					
+			// 	}
+			// 	)();
+
+				
+			// 	whq.getNumber('max');
+
+
+			//简单单例模式
+			// var whq={
+			// 	dom:{
+			// 		hello:function(){alert('hello')},
+			// 		word:function(){alert('word')},
+			// 	},
+			// 	attr:{
+			// 		width:function(){alert('width')},
+			// 		height:function(){alert('height')}
+			// 	}
+
+			// }
+
+			// whq.dom.hello();
+			// whq.dom.word();
+			// whq.attr.width();
+			// whq.attr.height();
+
+							
+					//惰性单例，闭包应用
+		// 	var  LazySingle=(function(){
+
+		// 			var _instance=null;
+
+		// 			function Single(){
+		// 			return {
+		// 				publicMethod:function(){alert('hello world')},
+		// 				publicProperty:'1.0'
+		// 				 }
+		// 			}
+		// 	    //获取单例对象接口
+		// 		return  function(){
+		// 		if(!_instance)
+		// 	     {
+		// 		   _instance=Single();
+		// 			}
+		// 		 return _instance;
+		// 		}
+
+		// })();
+
+		// 	alert(LazySingle().publicProperty);
+		// 	LazySingle().publicMethod();
+
+
+
+		}
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
