@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	function addEvent(obj,type){
+		if(obj.attachEvent){
+			 obj.attachEvent('on'+type,function(){alert('hello')});
+		}
+		else{
+			 obj.addEventListener(type,function(){alert('world'),false})
+		}
+	}
+
+	window.onload=function(){
+		var odiv=document.getElementsByTagName('div')[0];
+		addEvent(odiv,'click');
+
+
+	}
+
+
+
+
+
+	</script>
+	<style type="text/css">
+		div{
+			width:100px;
+			height: 100px;
+			background: red;
+		}
+
+	</style>
+</head>
+<body>
+<div>事件兼容性处理</div>
+</body>
+</html>
