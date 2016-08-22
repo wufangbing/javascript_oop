@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+			
+			window.onload=function(){
+
+				//对象兼容适配器
+			// 	function adapter(obj){
+
+			// 		var person={
+			// 			name:'五名包',
+			// 			age:'20',
+			// 			hobby:'gril',
+			// 			length:'20px'
+			// 		};
+
+			// 		for(var prop in obj){
+			// 			person[prop]=obj[prop]||person[prop];
+			// 		}
+
+			// 		return person;
+
+
+			// 	}
+
+
+			// var son={
+						
+			// 			hobby:'boy',
+			// 			length:'30px'
+			// 		}
+
+			// 	var p=adapter(son);
+			// 	for(var prop in p)
+			// 		alert(p[prop]);
+
+
+			//数组变成对象的适配器
+			var  arr=['javascript','book','编程语言','7月30日'];
+
+
+			function adapter(arr){
+				return{
+					name:arr[0],
+					type:arr[1],
+					language:arr[2],
+					time:arr[3]
+				}
+
+
+			}
+
+			var obj=adapter(arr);
+			for(var prop in obj)
+					alert(obj[prop]);
+
+			}
+
+
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
