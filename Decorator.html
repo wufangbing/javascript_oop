@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+			var oinput=document.getElementById('inputText');
+			oinput.onclick=function(){
+				document.getElementById('printText').style.display='block';
+
+									}
+
+
+				decorator('inputText',function(){
+					alert('hello');
+				})
+
+				decorator('inputText',function(){
+					alert('world');
+				})
+
+				};
+
+
+			var decorator=function(input,fn){
+				var input=document.getElementById(input);
+				if(typeof input.onclick==='function'){
+					var oldclick=input.onclick;
+					input.onclick=function(){
+						oldclick();
+						fn();
+					}
+
+				}
+
+				else{
+					input.onclick=fn();
+				}
+
+
+
+			}
+
+
+
+
+		
+
+	</script>
+</head>
+<body>
+<input type="text" name="" id="inputText">
+<div id="printText" style="display: none">please input messages</div>
+
+</body>
+</html>
