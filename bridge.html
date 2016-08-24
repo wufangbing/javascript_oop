@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	window.onload=function()
+	{
+
+		function speack(p){
+			this.p=p;
+		}
+		
+
+		speack.prototype={
+			info:function(){alert(this.p)}
+		}
+
+
+		function jump(q){
+			this.q=q;
+		}
+
+		jump.prototype={
+			info:function(){alert(this.q)}
+		}
+
+
+		function color(c){
+			this.c=c;
+		}
+
+		color.prototype={
+			info:function(){alert(this.c)}
+		}
+
+
+
+		function person(p,q){
+			this.speak=new speack(p);
+			this.jump=new jump(q);
+		}
+
+		person.prototype={
+			init:function(){
+				this.speak.info();
+				this.jump.info()
+			}
+		}
+
+
+		function sprites(p,q){
+			this.color=new color(p);
+			this.jump=new jump(q);
+		}
+
+		sprites.prototype={
+
+			init:function(){
+				this.color.info();
+				this.jump.info()
+			}
+		}
+
+		var p1=new person('hello','jump');
+		p1.init();
+
+
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
