@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#news{
+			width:300px;
+			height: 300px;
+			border:1px solid blue;
+		}
+		.color{
+			background: green;
+		}
+
+	</style>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			function inheritObject(o){
+				function f(){};
+				f.prototype=o;
+				return new f();
+			}
+
+			function inherit(sub,sup){
+				var p=inheritObject(sup.prototype);
+				p.constructor=sub;
+				sub.prototype=p;
+
+			}
+
+
+			function news(){
+				this.children=[];
+				this.element=null;
+			}
+
+			news.prototype={
+				init:function(){},
+				add:function(){},
+				getElement:function(){},
+				show:function(){}
+			}
+
+			//创建ul容器
+			function container(id,parent){
+					news.call(this);
+					this.id=id;
+					this.parent=parent;	
+					this.init();
+			}
+
+			inherit(container,news);
+
+			container.prototype.init=function(){
+				this.element=document.createElement('ul');
+				this.element.id=this.id;
+				this.element.className='container_class';
+			}
+
+
+			container.prototype.add=function(child){
+				this.children.push(child);
+				this.element.appendChild(child.getElement())
+				//调用的是自己本身的getElement()，而不是当前的getElement();
+				return this;
+			}
+
+			container.prototype.getElement=function(){
+				return this.element;
+			}
+
+			container.prototype.show=function(){
+				this.parent.appendChild(this.element);
+			}
+
+
+			//创建li标签
+			function item(className){
+				news.call(this);
+				this.className=className;
+				this.init();
+			}
+
+			inherit(item,news);
+
+			item.prototype.init=function(){
+				this.element=document.createElement('li');
+				//this.element.style.listStyle='none';
+				//this.element.style.marginLeft='-40px';
+				this.element.className=this.className;
+			}
+
+			item.prototype.add=function(child){
+				this.children.push(child);
+				this.element.appendChild(child.getElement());
+				//调用的是自己本身的getElement()，而不是当前的getElement();
+				return this;
+			}
+
+			item.prototype.getElement=function(){
+				return this.element;
+			}
+
+
+			  //其他基类的创建
+        var Iconnews=function(text,href,type){
+            news.call(this);
+            this.text=text||'';
+            this.href=href||'#';
+            this.type=type||'video';
+            this.init();
+        };
+
+        inherit(Iconnews,news);
+
+        Iconnews.prototype.init=function(){
+            this.element=document.createElement('a');
+            this.element.innerHTML=this.text;
+            this.element.href=this.href;
+            this.element.className='icon'+this.type;
+        };
+
+        Iconnews.prototype.add=function(){};
+        Iconnews.prototype.getElement=function(){
+            return this.element;
+        };
+
+
+        var p=new container('news',document.body);
+        p.add(new item('color').add(new Iconnews('第1行','#','one')));
+        p.add(new item('color').add(new Iconnews('第2行','#','one')));
+        p.add(new item('color').add(new Iconnews('第3行','#','one')));
+        p.show();
+
+		
+
+
+
+
+		}
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
