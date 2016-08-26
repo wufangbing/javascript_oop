@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function(){
+			
+			var flyweight=function(){
+				var arr=[];
+				function createDiv(){
+					var odiv=document.createElement('div');
+					document.getElementById('container').appendChild(odiv);
+					arr.push(odiv);
+					return odiv;
+				}
+
+
+				return{
+					getDiv:function(){
+						if(arr.length<5){
+							return createDiv();
+						}
+
+						//操作数组来操作创建的div
+						else{
+
+							var div=arr.shift();
+							arr.push(div);
+							return div;
+
+						}
+					}
+				}
+
+
+
+
+			}()
+
+			var artile=[1,2,3,4,5,6,7,8];
+			for(i=0;i<5;i++){
+				flyweight.getDiv().innerHTML=artile[i];
+			}
+
+			document.getElementsByTagName('input')[0].onclick=function(){
+
+				for(i=0;i<5;i++){
+
+					if(artile[i+5])
+				flyweight.getDiv().innerHTML=artile[i+5];
+			else
+				flyweight.getDiv().innerHTML=artile[i];
+
+
+			}
+
+
+
+
+
+			}
+
+
+
+
+			}
+	</script>
+</head>
+<body>
+<div id="container"></div>
+<input type="button" name="" value="click">
+</body>
+</html>
